@@ -23,6 +23,11 @@ export default new Router({
       path: '/cj',
       name: 'cj',
       component: () => import('./views/CodingGarden.vue')
+    },
+    {
+      path: '/cj-score-counter',
+      name: 'cj-score-counter',
+      component: () => import('./views/PlayerScoreCounter.vue')
     }
   ]
 })
