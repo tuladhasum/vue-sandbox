@@ -42,6 +42,19 @@
                 todos: []
             }
         },
+        watch:{
+            todos:{
+                handler(){
+                    localStorage.todos = JSON.stringify(this.todos);
+                },
+                deep: true
+            }
+        },
+        mounted(){
+            if (localStorage.todos){
+                this.todos = JSON.parse(localStorage.todos);
+            }
+        },
         methods: {
             addTodo() {
                 if (this.newTodo !== '') {

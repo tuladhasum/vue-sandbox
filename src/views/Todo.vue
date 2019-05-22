@@ -10,6 +10,7 @@
             <button type="submit" class="btn btn-primary btn-sm">Add Todo</button>
             <button type="button" class="btn btn-danger btn-sm" @click="deleteAll">Delete All</button>
             <button type="button" class="btn btn-success btn-sm" @click="completeAll">Completed all</button>
+            <button type="button" class="btn btn-info btn-sm" @click="inCompleteAll">Incomplete All</button>
          </div>
       </form>
 
@@ -67,6 +68,11 @@
             completeAll() {
                 this.todos.forEach(todo => {
                     todo.done = true
+                });
+            },
+            inCompleteAll(){
+                this.todos.forEach(todo => {
+                    todo.done = false;
                 });
             }
         }

@@ -25,13 +25,34 @@
         name: "PlayerScoreCounter",
         data(){
             return {
-                player_1_score: 0,
                 player_1: {
                     score: 0
                 },
                 player_2: {
                     score: 0
                 }
+            }
+        },
+        watch: {
+            player_1: {
+                handler(){
+                    localStorage.player_1 = JSON.stringify(this.player_1);
+                },
+                deep: true
+            },
+            player_2: {
+                handler(){
+                    localStorage.player_2 = JSON.stringify(this.player_2);
+                },
+                deep:true
+            }
+        },
+        mounted(){
+            if (localStorage.player_1){
+                this.player_1 = JSON.parse(localStorage.player_1);
+            }
+            if (localStorage.player_2){
+                this.player_2 = JSON.parse(localStorage.player_2);
             }
         },
         methods: {
