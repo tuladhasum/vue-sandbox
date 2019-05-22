@@ -7,7 +7,9 @@
             <input type="text" class="form-control" v-model="newTodo">
          </div>
          <div class="form-group">
-            <button class="btn btn-primary">Add Todo</button>
+            <button type="submit" class="btn btn-primary btn-sm">Add Todo</button>
+            <button type="button" class="btn btn-danger btn-sm" @click="deleteAll">Delete All</button>
+            <button type="button" class="btn btn-success btn-sm" @click="completeAll">Completed all</button>
          </div>
       </form>
 
@@ -43,15 +45,23 @@
                     this.newTodo = '';
                 }
             },
-            deleteTodo(index){
-                this.todos.splice(index,1);
+            deleteTodo(index) {
+                this.todos.splice(index, 1);
+            },
+            deleteAll() {
+                this.todos = []
+            },
+            completeAll() {
+                this.todos.forEach(todo => {
+                    todo.done = true
+                });
             }
         }
     }
 </script>
 
 <style scoped>
-.isDone{
-   text-decoration: line-through;
-}
+   .isDone {
+      text-decoration: line-through;
+   }
 </style>
