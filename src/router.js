@@ -33,6 +33,11 @@ export default new Router({
       path: '/todo',
       name: 'todo',
       component: () => import('./views/Todo.vue')
+    },
+    {
+      path: '/reddit',
+      name: 'reddit',
+      component: () => import('./views/Reddit.vue')
     }
   ]
 })
