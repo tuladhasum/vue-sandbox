@@ -18,11 +18,11 @@
             <button class="btn btn-danger" @click="allDone">Mark all done</button>
             <h3>List of Todos</h3>
             <ul v-if="todos">
-               <li v-for="todo in todos" v-bind:key="todo.id">
+               <li v-for="todo in todos" v-bind:key="todo.id" class="list-unstyled">
                   <label class="checkbox">
                      <input type="checkbox" v-model="todo.done">
-                     <span :class="{done: todo.done}">{{todo.title}}</span>
-                     <button @click="removeTodo(todo)" class="button">Remove</button>
+                     <span :class="{done: todo.done}">{{todo.title}}  </span>
+                     <button @click="removeTodo(todo)" class="btn btn-sm btn-danger">x</button>
                   </label>
 
                </li>
@@ -44,11 +44,14 @@
         },
         methods: {
             addTodo() {
-                this.todos.push({
-                    title: this.newTodo,
-                    done: false
-                })
-                this.newTodo = '';
+                if (this.newTodo !== '') {
+                    this.todos.push({
+                        title: this.newTodo,
+                        done: false
+                    })
+                    this.newTodo = '';
+                }
+
             },
             removeTodo(todo) {
                 const todoIndex = this.todos.indexOf(todo);

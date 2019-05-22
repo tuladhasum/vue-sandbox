@@ -28,6 +28,11 @@ export default new Router({
       path: '/cj-score-counter',
       name: 'cj-score-counter',
       component: () => import('./views/PlayerScoreCounter.vue')
+    },
+    {
+      path: '/todo',
+      name: 'todo',
+      component: () => import('./views/Todo.vue')
     }
   ]
 })
