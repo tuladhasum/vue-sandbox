@@ -19,7 +19,7 @@
                        @click="post.showImage = !post.showImage"
                        type="button" class="btn btn-primary btn-sm">{{post.showImage ? 'Hide':'Show'}} Image</button>
                <div v-if="post.showImage">
-                  <img :src="post.data.url" alt="">
+                  <img :src="post.data.url" width="800px" alt="">
                </div>
                </p>
             </div>
