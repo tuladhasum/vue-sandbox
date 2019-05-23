@@ -23,6 +23,7 @@
               <router-link to="/cj-score-counter" class="dropdown-item">Player Score Counter</router-link>
               <router-link to="/todo" class="dropdown-item">Todo</router-link>
               <router-link to="/reddit" class="dropdown-item">Reddit</router-link>
+              <router-link to="/rockets" class="dropdown-item">Rockets</router-link>
             </div>
           </li>
         </ul>

@@ -38,6 +38,11 @@ export default new Router({
       path: '/reddit',
       name: 'reddit',
       component: () => import('./views/Reddit.vue')
+    },
+    {
+      path: '/rockets',
+      name: 'rockets',
+      component: () => import('./views/Rockets.vue')
     }
   ]
 })
