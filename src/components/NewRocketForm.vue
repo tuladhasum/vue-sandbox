@@ -35,32 +35,33 @@
 
 <script>
 
-    function getEmptyRocket() {
-        return {
-            name: '',
-            description: '',
-            country: '',
-            image: ''
-        };
-    }
+   function getEmptyRocket() {
+      return {
+         name: '',
+         description: '',
+         country: '',
+         image: ''
+      };
+   }
 
-    export default {
-        props: ['addRocket'],
-        data() {
-            return {
-                showForm: false,
-                rocket: getEmptyRocket()
-            }
-        },
-        methods: {
-            onAddRocket() {
-                this.addRocket(this.rocket);
-                this.rocket = getEmptyRocket();
-                this.showForm = false;
-            }
-        },
-        name: "NewRocketForm"
-    }
+   export default {
+      // props: ['addRocket'],
+      data() {
+         return {
+            showForm: false,
+            rocket: getEmptyRocket()
+         }
+      },
+      methods: {
+         onAddRocket() {
+            this.$store.commit('addRocket', this.rocket);
+            // this.addRocket(this.rocket);
+            this.rocket = getEmptyRocket();
+            this.showForm = false;
+         }
+      },
+      name: "NewRocketForm"
+   }
 </script>
 
 <style scoped>

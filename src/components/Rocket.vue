@@ -12,10 +12,17 @@
 </template>
 
 <script>
-    export default {
-        props: ['rocket', 'removeRocket'],
-        name: "Rocket"
-    }
+   import { mapMutations} from 'vuex';
+   export default {
+      props: ['rocket'],
+      methods: mapMutations(['removeRocket']),
+      // methods: {
+      //    removeRocket() {
+      //       this.$store.commit('removeRocket', this.rocket);
+      //    }
+      // },
+      name: "Rocket"
+   }
 </script>
 
 <style scoped>
