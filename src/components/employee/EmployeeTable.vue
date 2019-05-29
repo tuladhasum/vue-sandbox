@@ -52,7 +52,9 @@
       },
       methods: {
          deleteEmployee(id) {
-            this.$emit('delete:employee', id);
+            if (confirm("Are you sure you want to delete")) {
+               this.$emit('delete:employee', id);
+            }
          },
          editMode(id) {
             this.editing = id;

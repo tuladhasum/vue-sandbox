@@ -11,6 +11,8 @@
    import EmployeeTable from "@/components/employee/EmployeeTable";
    import EmployeeForm from "@/components/employee/EmployeeForm";
 
+   const userAPI = 'https://jsonplaceholder.typicode.com/users';
+
    export default {
       components: {EmployeeForm, EmployeeTable},
       data() {
@@ -35,7 +37,7 @@
          }
       },
       methods: {
-         addEmployee(employee) {
+         zaddEmployee(employee) {
             const lastId = this.employees.length > 0
                ? this.employees[this.employees.length - 1].id : 0;
             const id = lastId + 1;
@@ -43,19 +45,55 @@
             // this.employees.push(employee);
             this.employees = [...this.employees, newEmployee];
          },
-         deleteEmployee(id) {
+         async addEmployee(employee) {
+            try {
+               const response = await fetch(url, {
+                  method: 'POST',
+                  body: JSON.stringify(employee),
+                  headers: {'Content-type': 'application/json; charset=UTF-8'}
+               });
+               const data = await response.json();
+               this.employees = [...this.employees, data];
+            } catch (e) {
+               console.error(e);
+            }
+         },
+         async deleteEmployee(id) {
+            try {
+               await fetch(`${userAPI}/${id}`, {
+                  method: "DELETE"
+               });
+               this.employees = this.employees.filter(employee => employee.id !== id);
+            } catch (error) {
+               console.error(error);
+            }
+         },
+         zdeleteEmployee(id) {
             this.employees = this.employees.filter(
                employee => employee.id !== id
             );
          },
-         editEmployee(id, updateEmployee) {
+         zeditEmployee(id, updateEmployee) {
             this.employees = this.employees.map(
                employee => employee.id === id ? updateEmployee : employee
             );
          },
-         async getEmployees(){
+         async editEmployee(id, updatedEmployee) {
             try {
-               const response = await fetch('http://localhost:3000/users')
+               const response = await fetch(`${userAPI}/${id}`, {
+                  method: 'PUT',
+                  body: JSON.stringify(updatedEmployee),
+                  headers: {'Content-type': 'application/json; charset=UTF-8'},
+               });
+               const data = await response.json();
+               this.employees = this.employees.map(employee => (employee.id === id ? data : employee));
+            } catch (error) {
+               console.error(error);
+            }
+         },
+         async getEmployees() {
+            try {
+               const response = await fetch(userAPI)
                const data = await response.json()
                this.employees = data
             } catch (error) {
@@ -63,7 +101,7 @@
             }
          }
       },
-      mounted(){
+      mounted() {
          this.getEmployees();
       },
       watch: {},

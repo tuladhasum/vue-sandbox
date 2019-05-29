@@ -42,8 +42,13 @@
   </div>
 </template>
 
+<script>
+
+</script>
+
 <style>
-  @import "~bootswatch/dist/sketchy/bootstrap.min.css";
+  @import "~bootswatch/dist/sandstone/bootstrap.min.css";
+  /*@import "~bootswatch/dist/sketchy/bootstrap.min.css";*/
 
   #app {
 
