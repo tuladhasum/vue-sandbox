@@ -24,18 +24,20 @@
               <router-link to="/todo" class="dropdown-item">Todo</router-link>
               <router-link to="/reddit" class="dropdown-item">Reddit</router-link>
               <router-link to="/rockets" class="dropdown-item">Rockets</router-link>
+              <router-link to="/craigslist" class="dropdown-item">Craigslist</router-link>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Misc. Projects
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+              <router-link to="/invoice" class="dropdown-item">Invoice</router-link>
             </div>
           </li>
         </ul>
       </div>
     </nav>
-<!--    <div id="nav">-->
-<!--      <router-link to="/">Home</router-link> |-->
-<!--      <router-link to="/about">About</router-link> | -->
-<!--      <router-link to="/cj">Coding Garden CJ</router-link> |-->
-<!--      <router-link to="/cj-score-counter">Player Score Counter</router-link> |-->
-<!--      <router-link to="/todo">Todo</router-link>-->
-<!--    </div>-->
     <router-view/>
   </div>
 </template>
@@ -44,10 +46,6 @@
   @import "~bootswatch/dist/sketchy/bootstrap.min.css";
 
   #app {
-  /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
-  /*-webkit-font-smoothing: antialiased;*/
-  /*-moz-osx-font-smoothing: grayscale;*/
-  /*color: #2c3e50;*/
-  /*margin-top: 60px;*/
+
 }
 </style>

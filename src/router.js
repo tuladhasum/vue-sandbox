@@ -5,6 +5,7 @@ import Home from './views/Home.vue'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -43,6 +44,16 @@ export default new Router({
       path: '/rockets',
       name: 'rockets',
       component: () => import('./views/Rockets.vue')
+    },
+    {
+      path: '/craigslist',
+      name: 'craigslist',
+      component: () => import('./views/Craigslist.vue')
+    },
+    {
+      path: '/invoice',
+      name: 'invoice',
+      component: () => import('./views/Invoice.vue')
     }
   ]
 })

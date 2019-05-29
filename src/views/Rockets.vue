@@ -13,7 +13,7 @@
     import NewRocketForm from '@/components/NewRocketForm';
     import RocketList from '@/components/RocketList';
 
-    import API from '@/lib/API';
+    // import API from '@/lib/API';
 
     export default {
         components: {
