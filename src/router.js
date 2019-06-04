@@ -74,6 +74,11 @@ export default new Router({
       path: '/fishui',
       name: 'fishui',
       component: () => import('./views/FishUI.vue')
+    },
+    {
+      path: '/todolist',
+      name: 'todolist',
+      component: () => import('./views/TodoList.vue')
     }
   ]
 })
