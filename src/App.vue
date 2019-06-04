@@ -33,6 +33,10 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
               <router-link to="/invoice" class="dropdown-item">Invoice</router-link>
+              <router-link to="/element" class="dropdown-item">Element UI</router-link>
+              <router-link to="/postcrud" class="dropdown-item">Post Crud Axios</router-link>
+              <router-link to="/enhancedform" class="dropdown-item">Enhanced Form</router-link>
+              <router-link to="/fishui" class="dropdown-item">Fish UI</router-link>
             </div>
           </li>
         </ul>
@@ -47,7 +51,9 @@
 </script>
 
 <style>
+  @import "~@fortawesome/fontawesome-free/css/all.min.css";
   @import "~bootswatch/dist/sandstone/bootstrap.min.css";
+  @import "~animate.css";
   /*@import "~bootswatch/dist/sketchy/bootstrap.min.css";*/
 
   #app {

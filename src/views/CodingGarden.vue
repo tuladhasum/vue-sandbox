@@ -80,7 +80,7 @@
 </script>
 
 <style scoped>
-   @import "https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css";
+   /*@import "https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css";*/
 
    .done {
       text-decoration: line-through;

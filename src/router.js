@@ -54,6 +54,26 @@ export default new Router({
       path: '/invoice',
       name: 'invoice',
       component: () => import('./views/Invoice.vue')
+    },
+    {
+      path: '/element',
+      name: 'element',
+      component: () => import('./views/ElementUI.vue')
+    },
+    {
+      path: '/postcrud',
+      name: 'postcrud',
+      component: () => import('./views/PostCrud.vue')
+    },
+    {
+      path: '/enhancedform',
+      name: 'enhancedform',
+      component: () => import('./views/EnhancedForm.vue')
+    },
+    {
+      path: '/fishui',
+      name: 'fishui',
+      component: () => import('./views/FishUI.vue')
     }
   ]
 })
