@@ -14,12 +14,16 @@
             <ul class="list-group-flush">
                <transition-group enter-active-class="animated fadeInDown"
                                  leave-active-class="animated fadeOutDown">
-                  <todo-item :todo="todo" :index="index" @removedTodo="removeTodo"
-                      v-for="(todo,index) in todosFiltered" :key="todo.id" @dblclick="editTodo(todo)">
+                  <todo-item :todo="todo"
+                             :index="index"
+                             :checkAll="itemCount === remaining"
+                             @removedTodo="removeTodo"
+                             @finishedEdit="finishedEdit"
+                             v-for="(todo,index) in
+                             todosFiltered" :key="todo.id">
                   </todo-item>
 
-                  <li v-if="isEmpty"
-                      class="list-group-item h4 bg-danger text-light">
+                  <li v-if="isEmpty" class="list-group-item h4 bg-danger text-light">
                      No Items
                   </li>
                </transition-group>
@@ -136,19 +140,8 @@
          removeTodo(index) {
             this.todos.splice(index, 1);
          },
-         editTodo(todo) {
-            this.beforeEditCache = todo.title;
-            todo.editing = true;
-         },
-         doneEdit(todo) {
-            if (todo.title.trim().length === 0) {
-               todo.title = this.beforeEditCache;
-            }
-            todo.editing = false;
-         },
-         cancelEdit(todo) {
-            todo.title = this.beforeEditCache;
-            todo.editing = false;
+         finishedEdit(data) {
+            this.todos.splice(data.index, 1, data.todo);
          },
          checkAllTodos() {
             this.todos.forEach(todo => {
@@ -159,13 +152,6 @@
             this.todos = this.todos.filter(todo => {
                return todo.completed === false;
             });
-         }
-      },
-      directives: {
-         focus: {
-            inserted: function (el) {
-               el.focus();
-            }
          }
       }
    }
@@ -180,8 +166,4 @@
       opacity: 0;
    }
 
-   .completed {
-      text-decoration: line-through;
-      color: gray;
-   }
 </style>

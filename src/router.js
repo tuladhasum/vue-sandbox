@@ -10,11 +10,23 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: {
+        title: 'Sumit - Vue Sandbox'
+      }
     },
     {
       path: '/about',
       name: 'about',
+      meta: {
+        title: "Aboutie Page",
+        metaTags: [
+          {
+            name: "About Page",
+            content: "Another About about page content"
+          }
+        ]
+      },
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
@@ -73,11 +85,17 @@ export default new Router({
     {
       path: '/fishui',
       name: 'fishui',
+      meta: {
+        title: "Todo list without Component"
+      },
       component: () => import('./views/FishUI.vue')
     },
     {
       path: '/todolist',
       name: 'todolist',
+      meta: {
+        title: "Todo list with Component"
+      },
       component: () => import('./views/TodoList.vue')
     }
   ]
