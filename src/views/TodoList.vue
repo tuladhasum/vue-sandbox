@@ -12,8 +12,9 @@
             </div>
 
             <ul class="list-group-flush">
-               <transition-group enter-active-class="animated fadeInDown"
-                                 leave-active-class="animated fadeOutDown">
+               <transition-group enter-active-class="animated fadeIn faster"
+                                 :duration="{ enter: 300, leave: 300 }"
+                                 leave-active-class="animated fadeOut faster">
                   <todo-item :todo="todo"
                              :index="index"
                              :checkAll="itemCount === remaining"
@@ -22,11 +23,8 @@
                              v-for="(todo,index) in
                              todosFiltered" :key="todo.id">
                   </todo-item>
-
-                  <li v-if="isEmpty" class="list-group-item h4 bg-danger text-light">
-                     No Items
-                  </li>
                </transition-group>
+               <li v-if="isEmpty" class="list-group-item h4 bg-danger text-light">No Items</li>
 
                <li class="list-group-item bg-light d-flex justify-content-between">
                   <div class="form-check h4">
@@ -83,23 +81,36 @@
       data() {
          return {
             newTodo: "",
-            idForTodo: 10,
+            idForTodo: 0,
             beforeEditCache: "",
             filter: 'all',
             todos: [
-               {
-                  'id': 1,
-                  'title': 'Todo Item number 1',
-                  'completed': false,
-                  'editing': false
-               },
-               {
-                  'id': 2,
-                  'title': 'Todo Item number 2',
-                  'completed': true,
-                  'editing': false
-               },
+               // {
+               //    'id': 1,
+               //    'title': 'Todo Item number 1',
+               //    'completed': false,
+               //    'editing': false
+               // },
+               // {
+               //    'id': 2,
+               //    'title': 'Todo Item number 2',
+               //    'completed': true,
+               //    'editing': false
+               // },
             ]
+         }
+      },
+      mounted() {
+         if (localStorage.todolist) {
+            this.todos = JSON.parse(localStorage.todolist);
+         }
+      },
+      watch: {
+         todos: {
+            handler() {
+               localStorage.todolist = JSON.stringify(this.todos);
+            },
+            deep: true
          }
       },
       computed: {
@@ -126,7 +137,6 @@
       methods: {
          addTodo() {
             if (this.newTodo.trim().length === 0) return;
-            console.log(this.newTodo);
             this.todos.push({
                id: this.idForTodo,
                title: this.newTodo,
