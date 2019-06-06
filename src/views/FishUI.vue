@@ -135,7 +135,6 @@
       methods: {
          addTodo() {
             if (this.newTodo.trim().length === 0) return;
-            console.log(this.newTodo);
             this.todos.push({
                id: this.idForTodo,
                title: this.newTodo,

@@ -14,25 +14,20 @@
       </Timeline>
       <FormItem
               v-for="(item, index) in formDynamic.items"
+
               v-if="item.status"
               :key="index"
               :label="'Item ' + item.index"
               :prop="'items.' + index + '.value'"
               :rules="{required: true, message: 'Item ' + item.index +' can not be empty', trigger: 'blur'}">
          <Row>
-            <Col span="18">
-               <Input type="text" v-model="item.value" placeholder="Enter something..."></Input>
-            </Col>
-            <Col span="4" offset="1">
+               <Input type="text" v-model="item.value" placeholder="Enter something..." />
                <Button @click="handleRemove(index)">Delete</Button>
-            </Col>
          </Row>
       </FormItem>
       <FormItem>
          <Row>
-            <Col span="12">
                <Button type="dashed" long @click="handleAdd" icon="md-add">Add item</Button>
-            </Col>
          </Row>
       </FormItem>
       <FormItem>
@@ -42,6 +37,7 @@
    </Form>
 </template>
 <script>
+   /* eslint-disable */
    export default {
       data() {
          return {

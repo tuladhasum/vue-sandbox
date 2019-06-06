@@ -1,5 +1,5 @@
 <template>
-   <section class="container">
+   <section class="container-fluid">
       <div class="row justify-content-center">
          <div class="col-8">
             <h1 class="display-4 mb-4">Google Keep</h1>
@@ -18,8 +18,6 @@
                   <todo-item :todo="todo"
                              :index="index"
                              :checkAll="itemCount === remaining"
-                             @removedTodo="removeTodo"
-                             @finishedEdit="finishedEdit"
                              v-for="(todo,index) in
                              todosFiltered" :key="todo.id">
                   </todo-item>
@@ -104,6 +102,10 @@
          if (localStorage.todolist) {
             this.todos = JSON.parse(localStorage.todolist);
          }
+      },
+      created() {
+         eventBus.$on('removedTodo', (index) => this.removeTodo(index));
+         eventBus.$on('finishedEdit', (data) => this.finishedEdit(data));
       },
       watch: {
          todos: {

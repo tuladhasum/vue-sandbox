@@ -5,7 +5,9 @@ import store from './store'
 
 import iView from 'iview';
 import FishUI from 'fish-ui';
-import VueLodash from 'vue-lodash'
+import VueLodash from 'vue-lodash';
+import Element from 'element-ui';
+import locale from 'element-ui/lib/locale/lang/en';
 
 const options = { name: 'lodash' } // customize the way you want to call it
 Vue.use(VueLodash, options) // options is optional
@@ -14,7 +16,7 @@ Vue.use(VueLodash, options) // options is optional
 import 'iview/dist/styles/iview.css';
 Vue.use(iView);
 Vue.use(FishUI);
-
+Vue.use(Element,{ locale });
 
 require('./bootstrap');
 
@@ -70,6 +72,8 @@ router.beforeEach((to, from, next) => {
   next();
 });
 
+// Use event bus
+window.eventBus = new Vue();
 
 new Vue({
   router,

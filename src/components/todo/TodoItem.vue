@@ -18,10 +18,17 @@
                 class="ml-4 h4 form-control form-editing " v-model="title">
       </div>
 
-      <button @click="removeTodo(index)"
-              class="btn btn-outline-danger btn-sm">
-         <i class="fa fa-times"></i>
-      </button>
+      <div class="btn-group">
+         <button class="btn btn-outline-info btn-sm" @click="pluralize">
+            <i class="fa fa-eye"></i>
+         </button>
+         <button @click="removeTodo(index)"
+                 class="btn btn-outline-danger btn-sm">
+            <i class="fa fa-times"></i>
+         </button>
+      </div>
+
+
    </div>
 </template>
 
@@ -51,6 +58,12 @@
             'beforeEditCache': ''
          }
       },
+      created() {
+         eventBus.$on('pluralize', this.handlePluralize);
+      },
+      beforeDestroy() {
+         eventBus.$off('pluralize', this.handlePluralize);
+      },
       watch: {
          checkAll() {
             this.completed = this.checkAll ? true : this.todo.completed;
@@ -63,7 +76,7 @@
       },
       methods: {
          removeTodo(index) {
-            this.$emit('removedTodo', index);
+            eventBus.$emit('removedTodo', index);
             //stopped at 12:32
          },
          editTodo() {
@@ -74,12 +87,8 @@
             this.title = this.beforeEditCache;
             this.editing = false;
          },
-         doneEdit() {
-            if (this.title.trim().length === 0) {
-               this.title = this.beforeEditCache;
-            }
-            this.editing = false;
-            this.$emit('finishedEdit', {
+         finishedEdit: function () {
+            eventBus.$emit('finishedEdit', {
                'index': this.index,
                'todo': {
                   'id': this.id,
@@ -88,7 +97,20 @@
                   'editing': this.editing
                }
             });
+         }, doneEdit() {
+            if (this.title.trim().length === 0) {
+               this.title = this.beforeEditCache;
+            }
+            this.editing = false;
+            this.finishedEdit();
          },
+         pluralize() {
+            eventBus.$emit('pluralize');
+            this.finishedEdit();
+         },
+         handlePluralize() {
+            this.title = this.title + 's';
+         }
       },
       directives: {
          focus: {
