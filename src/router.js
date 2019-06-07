@@ -105,6 +105,14 @@ export default new Router({
             title: 'Element Layout'
          },
          component: () => import('./views/ElementLayout.vue')
+      },
+      {
+         path: '/vuexninja',
+         name: 'vuexninja',
+         meta: {
+            title: 'vuexninja'
+         },
+         component: () => import('./views/VuexNinja.vue')
       }
    ]
 })

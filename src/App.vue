@@ -40,6 +40,7 @@
                      <router-link to="/fishui" class="dropdown-item">Fish UI - Todo List</router-link>
                      <router-link to="/todolist" class="dropdown-item">Todo List Component</router-link>
                      <router-link to="/elementlayout" class="dropdown-item">Element Layout</router-link>
+                     <router-link to="/vuexninja" class="dropdown-item">Vuex Ninja</router-link>
                   </div>
                </li>
             </ul>
