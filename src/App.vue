@@ -24,7 +24,7 @@
               <router-link to="/todo" class="dropdown-item">Todo</router-link>
               <router-link to="/reddit" class="dropdown-item">Reddit</router-link>
               <router-link to="/rockets" class="dropdown-item">Rockets</router-link>
-              <router-link to="/craigslist" class="dropdown-item">Craigslist</router-link>
+              <router-link to="/eventbus" class="dropdown-item">Event Bus</router-link>
             </div>
           </li>
           <li class="nav-item dropdown">

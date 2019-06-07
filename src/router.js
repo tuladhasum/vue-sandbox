@@ -58,9 +58,9 @@ export default new Router({
          component: () => import('./views/Rockets.vue')
       },
       {
-         path: '/craigslist',
-         name: 'craigslist',
-         component: () => import('./views/Craigslist.vue')
+         path: '/eventbus',
+         name: 'eventbus',
+         component: () => import('./views/EventBus.vue')
       },
       {
          path: '/invoice',
