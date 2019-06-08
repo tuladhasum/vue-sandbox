@@ -2,6 +2,7 @@
    <div>
       <h1>Product List 1</h1>
       <el-table :data="saleProducts"
+                :stripe="true"
                 style="width: 100%">
          <el-table-column prop="name"
                           label="Product Name">
